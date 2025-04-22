@@ -1,6 +1,7 @@
 package com.example.usafirebaseml;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -42,14 +43,29 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if (requestCode == REQUEST_IMAGE_PICK && resultCode == RESULT_OK && data != null) {
             Uri imageUri = data.getData();
-            imageView.setImageURI(imageUri);
+
             try {
-                InputImage image = InputImage.fromFilePath(this, imageUri);
+                // Carregar imagem da galeria como Bitmap
+                Bitmap originalBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+
+                // Redimensionar imagem para largura máxima de 1024 px
+                Bitmap scaledBitmap = scaleBitmapDown(originalBitmap, 1024);
+
+                // Mostrar no ImageView
+                imageView.setImageBitmap(scaledBitmap);
+
+                // Criar InputImage a partir do bitmap redimensionado
+                InputImage image = InputImage.fromBitmap(scaledBitmap, 0);
+
+                // Realizar OCR
                 recognizeText(image);
+
             } catch (IOException e) {
                 e.printStackTrace();
+                textViewResult.setText("Erro ao carregar a imagem.");
             }
         }
     }
@@ -62,5 +78,23 @@ public class MainActivity extends AppCompatActivity {
                     textViewResult.setText(resultText.isEmpty() ? "Nenhum texto encontrado." : resultText);
                 })
                 .addOnFailureListener(e -> textViewResult.setText("Erro: " + e.getMessage()));
+    }
+
+    // Utilitário para redimensionar imagem mantendo proporção
+    private Bitmap scaleBitmapDown(Bitmap bitmap, int maxDimension) {
+        int originalWidth = bitmap.getWidth();
+        int originalHeight = bitmap.getHeight();
+        int resizedWidth = maxDimension;
+        int resizedHeight = maxDimension;
+
+        if (originalHeight > originalWidth) {
+            resizedHeight = maxDimension;
+            resizedWidth = (int) (resizedHeight * (float) originalWidth / (float) originalHeight);
+        } else if (originalWidth > originalHeight) {
+            resizedWidth = maxDimension;
+            resizedHeight = (int) (resizedWidth * (float) originalHeight / (float) originalWidth);
+        }
+
+        return Bitmap.createScaledBitmap(bitmap, resizedWidth, resizedHeight, true);
     }
 }
