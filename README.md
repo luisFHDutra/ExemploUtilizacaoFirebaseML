@@ -31,3 +31,23 @@ No arquivo `build.gradle (app)`:
 implementation 'com.google.mlkit:text-recognition:16.0.0'
 implementation 'androidx.appcompat:appcompat:1.6.1'
 implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+```
+
+---
+
+## 📱 Capturas de Tela
+1. Selecionar uma imagem
+
+![Image](https://github.com/user-attachments/assets/72270726-a885-4288-8811-ee57e9464d97)
+
+2. Imagem carregada e texto extraído
+
+![Image](https://github.com/user-attachments/assets/c6cb34fe-ea14-47ef-a594-516f955768a5)
+
+---
+
+## 📌 Observações
+
+- O projeto utiliza o ML Kit na versão standalone, sem Firebase obrigatório.
+- Não há necessidade de internet para executar a detecção de texto (funciona 100% offline).
+- O modelo on-device é eficiente, leve e gratuito.
