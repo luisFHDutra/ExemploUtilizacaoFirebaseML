@@ -46,6 +46,14 @@ implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
 ---
 
+## 🧠 Detalhes Técnicos
+
+- A imagem selecionada pelo usuário é convertida em Bitmap e redimensionada para largura máxima de 1024px, garantindo melhor performance e compatibilidade com o modelo on-device do ML Kit.
+- A API TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS) é utilizada para OCR, evitando conflitos com bibliotecas antigas.
+- Nenhum dado é enviado à nuvem: o processamento ocorre 100% no dispositivo, oferecendo maior privacidade e uso offline.
+
+---
+
 ## 📌 Observações
 
 - O projeto utiliza o ML Kit na versão standalone, sem Firebase obrigatório.
