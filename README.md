@@ -17,7 +17,7 @@ Este projeto demonstra o uso da biblioteca **ML Kit** (by Google) para realizar 
 ## 🧰 Tecnologias Utilizadas
 
 - [ML Kit - Text Recognition](https://developers.google.com/ml-kit/vision/text-recognition/android)
-- Android SDK (API 33)
+- Android SDK (API 24)
 - Java 11
 - Gradle
 
