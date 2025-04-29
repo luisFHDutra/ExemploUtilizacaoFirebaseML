@@ -1,5 +1,10 @@
 # 📸 Firebase ML OCR Example (ML Kit)
 
+O Firebase Machine Learning é um SDK para dispositivos móveis que leva a experiência em aprendizado de máquina do Google para apps Android e iOS em um pacote eficiente e fácil de usar.
+Não importa se você é novo ou experiente em aprendizado de máquina, é possível implementar a funcionalidade necessária com apenas algumas linhas de código.
+Não é preciso ter um conhecimento profundo de redes neurais ou otimização de modelos para começar.
+Por outro lado, se você é um desenvolvedor de ML experiente, o Firebase ML fornece APIs convenientes que ajudam você a usar seus modelos personalizados do TensorFlow Lite nos seus apps para dispositivos móveis.
+
 Este projeto demonstra o uso da biblioteca **ML Kit** (by Google) para realizar **detecção de texto (OCR)** em imagens selecionadas pelo usuário no Android, utilizando **Java** e **Android Studio**.
 
 ---
