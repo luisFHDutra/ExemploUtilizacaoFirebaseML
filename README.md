@@ -32,10 +32,18 @@ Este projeto demonstra o uso da biblioteca **ML Kit** (by Google) para realizar 
 
 No arquivo `build.gradle (app)`:
 
-```gradle
+```
 implementation 'com.google.mlkit:text-recognition:16.0.0'
 implementation 'androidx.appcompat:appcompat:1.6.1'
 implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+```
+
+No arquivo `AndroidManifest.xml` na tag `application`:
+
+```
+<meta-data
+  android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+  android:value="ocr"/>
 ```
 
 ---
